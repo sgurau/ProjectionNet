@@ -1,0 +1,19 @@
+# Preprocssing sample data:
+
+1.Brain Extraction from anatomical data (bet): To remove non-brain tissue- skull, scalp, and soft tissues to isolate the brain. 
+
+2 Motion correction (mcflirt) and spatial smoothing (fslmaths) of functional data: 
+  
+  - Motion correction to realign each image in fmri time series to a common reference image (usually the first image). Head movements can introduce noise. 
+  - Smoothing to reduce noise and improve signal to noise ratio.
+
+3.Register functional data to anatomical data (obtained in step 1) and then to standard space (MNI152 2mm) (flirt - linear transformation).
+
+4.Perform brain parcellation using Harvard-oxford Atlas.
+  
+  - Combine the cortical and sub-cortical atlas (fslmaths).
+  - Register the combined atlas to the functional data in MNI space (flirt – linear transformation).
+
+5.Extract time series for each region (fslmeants).
+
+6.Run python code to compute Functional Connectivity between brain regions with Pearson Correlation (functional_connectivity.py)
