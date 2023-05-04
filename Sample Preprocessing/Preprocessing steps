@@ -16,4 +16,4 @@ Preprocssing sample data:
 
 5.Extract time series for each region (fslmeants).
 
-6.Run python code to compute Functional Connectivity between brain regions with Pearson Correlation (functional_connectivity.py)
+6.Run functional_connectivity.py to compute functional connectivity between brain regions with Pearson Correlation.
