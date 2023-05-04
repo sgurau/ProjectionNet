@@ -1,4 +1,4 @@
-# Preprocssing sample data:
+Preprocssing sample data:
 
 1.Brain Extraction from anatomical data (bet): To remove non-brain tissue- skull, scalp, and soft tissues to isolate the brain. 
 
