@@ -1,3 +1,6 @@
+# 1 June 2023
+1. batch processing script for all the collected data for replicability purpose. 
+
 # 18 May 2023
 TWo directions: 
 1. Data analysis on fMRI -> brain network, e.g. new classification models, the effects of parameters in data acquisition to down-stream analysis, etc. 
