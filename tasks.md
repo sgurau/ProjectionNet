@@ -1,3 +1,8 @@
+# 8 June 2023
+1. Download and process data for analysis.
+2. Read Lama2021 paper and replicate their methods on the data.
+3. Sort out HPC connection if possible. 
+
 # 1 June 2023
 1. batch processing script for all the collected data for replicability purpose. 
 
