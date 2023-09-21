@@ -1,3 +1,10 @@
+# 21 Sep 2023
+1. Push all code and data into github.
+2. Apply MDS with Euclidean distance and compare all dimensionality reduction results in thesis
+3. Fix SVM code using precomputed kernel
+4. Apply SVM with RBF kernel on MDS + SPD geodesic distance matrix results (2D) with cross validation 
+
+   
 # 8 June 2023
 1. Download and process data for analysis.
 2. Read Lama2021 paper and replicate their methods on the data.
