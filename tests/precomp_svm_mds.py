@@ -43,7 +43,7 @@ precomputed_kernel_matrix = np.exp(-(geodesic_distances-95) / gamma)
 data_matrices = np.array(data_matrices)
 
 # Create train-test split based on labels (maintaining class balance)
-data_train_indices, data_test_indices = train_test_split(np.arange(len(data_matrices)), test_size=0.2, stratify=labels) # random_state=47
+data_train_indices, data_test_indices = train_test_split(np.arange(len(data_matrices)), test_size=0.2, stratify=labels, random_state=47) 
 
 # Define the SVM classifier with a precomputed kernel
 classifier = SVC(kernel='precomputed')
