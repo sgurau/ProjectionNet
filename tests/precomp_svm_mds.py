@@ -84,9 +84,9 @@ import matplotlib.pyplot as plt
 color_mapping = {'AD': 'red', 'CN': 'blue'}
 colors = [color_mapping[label] for label in labels]
 
-# Plot LDA results
+# Plot MDS results
 plt.figure(figsize=(8, 6))
-plt.scatter(data_mds_geodesic[:,0], data_mds_geodesic[:,1], c=colors, alpha=0.4, s=5)  # Plot on one axis since LDA has only one dimension
+plt.scatter(data_mds_geodesic[:,0], data_mds_geodesic[:,1], c=colors, alpha=1, s=20)  # Plot on one axis since LDA has only one dimension
 plt.title('MDS - Geodesic Visualization')
 plt.xlabel
 plt.ylabel('')  # No need to label the y-axis since it's one-dimensional
