@@ -4,7 +4,7 @@
 3. Apply SVM with RBF kernel using MDS 3D, 4D etc resutls with hyperparameters fine tuning.
 4. Think about the problem for classifying new observations. First step: to see the difference between results of MDS using original distance matrix and MDS using distance matrix with one observation removed. See the following explanation in math.
 
-Let $\mathbf D$ be the distance matrix of size $n\times n$, ie  $\mathbf D\in \mathbb R^{n\times n}$. Write $\mathbf D_{-s}$ as the matrix with columns and rows removed in $\mathbf D$ where $s$ is a set with indices of observations, say $s=\\{1,2\\}$. Then $\mathbf D_{-86}$ would be the distance matrix with the 86th observation removed, i.e. a matrix of size $85\times 85$. Write $$\mathbf X = MDS(\mathbf D,2)$$ as the results of MDS with distance matrix $\mathbf D$ in dim-2, ie 2D space, and $\mathbf X\in \mathbb R^{n\times 2}$. So the claim is $$\mathbf X \not = \mathbf X_{-s}$$ and $\mathbf X_{-s} = MDS(\mathbf D_{-s},2)$, i.e. $$MDS(\mathbf D,2)_{-s}\not=MDS(\mathbf D_{-s},2).$$
+Let $\mathbf D$ be the distance matrix of size $n\times n$, ie  $\mathbf D\in \mathbb R^{n\times n}$. Write $\mathbf D_{-s}$ as the matrix with columns and rows removed in $\mathbf D$ where $s$ is a set with indices of observations, say $s=\\{1,2\\}$. Then $\mathbf D_{-86}$ would be the distance matrix with the 86th observation removed, i.e. a matrix of size $85\times 85$. Write $$\mathbf X = MDS(\mathbf D,2)$$ as the results of MDS with distance matrix $\mathbf D$ in dim-2, ie 2D space, and $\mathbf X\in \mathbb R^{n\times 2}$. So the claim is $$\mathbf X_s \not = MDS(\mathbf D_{-s},2)$$ where $\mathbf X_{-s}$ is the result of $\mathbf X$ with rows indexed by $s$ removed. 
 
    
 # 21 Sep 2023
