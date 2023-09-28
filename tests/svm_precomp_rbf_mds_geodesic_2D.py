@@ -67,6 +67,8 @@ conf_matrix = confusion_matrix(np.array(labels)[data_test_indices], predicted_la
 print("Confusion Matrix:")
 print(conf_matrix)
 
+print("="*50)  
+
 ###############################################################################
 
 # Set a fixed random seed for reproducibility
@@ -126,12 +128,14 @@ conf_matrix = confusion_matrix(labels_test, predicted_labels, labels=['AD', 'CN'
 print("Confusion Matrix with SVM - rbf only:")
 print(conf_matrix)
 
+print("="*50)  
+
 # Cross-validation 
 # Create k-fold cross-validation iterators
-kfold = KFold(n_splits=5, shuffle=True, random_state=47)
+kfold = KFold(n_splits=5, shuffle=True, random_state=47) # n_splits=5 gives best result; KFold Accuracy: 0.91 (+/- 0.06)
  
 # Perform cross-validation and get accuracy scores for KFold
-cross_val_scores_kfold = cross_val_score(svm_rbf, data_mds_geodesic, labels, cv=kfold, scoring='accuracy')
+cross_val_scores_kfold = cross_val_score(svm_rbf, data_train, labels_train, cv=kfold, scoring='accuracy')
 mean_accuracy_kfold = cross_val_scores_kfold.mean()
 
 # Print average accuracy and standard deviation for KFold
@@ -140,17 +144,43 @@ print("KFold Accuracy: {:.2f} (+/- {:.2f})".format(mean_accuracy_kfold, cross_va
 
 print("="*50)  
 
+###############################################################################
+
 # Hyperparameter Tuning
-param_grid_svm_poly = {'C': [0.001, 0.01, 0.1, 1, 10, 100], 'gamma': [0.001, 0.01, 0.1, 1, 10, 100]}
+# Random range for hyperparameters
+# param_grid_svm_rbf = {'C': [0.001, 0.01, 0.1, 1, 10, 100], 'gamma': [0.001, 0.01, 0.1, 1, 10, 100]}
+
+# Fine tuning hyperparameters
+param_grid_svm_rbf = {'C': [0.01, 0.5, 1, 1.5, 2], 'gamma': [ 0.0001, 0.0002, 0.0003, 0.0004, 0.0005, 0.0006]}
 cv = kfold
-grid_search_rbf = GridSearchCV(svm_rbf, param_grid_svm_poly, cv=cv, scoring='accuracy')
+grid_search_rbf = GridSearchCV(svm_rbf, param_grid_svm_rbf, cv=cv, scoring='accuracy')
 # Perform the grid search
 grid_search_rbf.fit(data_mds_geodesic, labels)
 
 # Get the best hyperparameters and accuracy
-best_params_poly = grid_search_rbf.best_params_
-best_accuracy_poly = grid_search_rbf.best_score_
+best_params_rbf = grid_search_rbf.best_params_
+best_accuracy_rbf = grid_search_rbf.best_score_
 
-print(f"Best Hyperparameters for SVM - rbf Kernel only, with KFold cross-validation: {best_params_poly}")
-print(f"Best Accuracy for SVM - rbf Kernel only, with KFold cross-validation: {best_accuracy_poly:.2f}")
+print(f"Best Hyperparameters for SVM - rbf Kernel only, with KFold cross-validation: {best_params_rbf}")
+print(f"Best Accuracy for SVM - rbf Kernel only, with KFold cross-validation: {best_accuracy_rbf:.2f}")
 
+
+###############################################################################
+# Prediction using best model with best set of hyperparameters found during grid search 
+
+predicted_labels = grid_search_rbf.best_estimator_.predict(data_test) 
+
+# Calculate accuracy and print classification report for the initial model
+accuracy = accuracy_score(labels_test, predicted_labels)
+classification_rep = classification_report(labels_test, predicted_labels)
+
+print("Accuracy with SVM - rbf Kernel, hyperparameter fine-tuned:", accuracy)
+print("Classification Report with SVM - rbf kernel, hyperparameter fine-tuned:\n", classification_rep)
+
+# Calculate the confusion matrix
+conf_matrix = confusion_matrix(labels_test, predicted_labels, labels=['AD', 'CN'])
+
+print("Confusion Matrix with SVM - rbf, hyperparameter fine-tuned:")
+print(conf_matrix)
+
+print("="*50)  
