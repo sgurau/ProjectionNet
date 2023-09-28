@@ -70,7 +70,6 @@ print(conf_matrix)
 print("="*50)  
 
 ###############################################################################
-
 # Set a fixed random seed for reproducibility
 np.random.seed(47) 
 
@@ -145,7 +144,6 @@ print("KFold Accuracy: {:.2f} (+/- {:.2f})".format(mean_accuracy_kfold, cross_va
 print("="*50)  
 
 ###############################################################################
-
 # Hyperparameter Tuning
 # Random range for hyperparameters
 # param_grid_svm_rbf = {'C': [0.001, 0.01, 0.1, 1, 10, 100], 'gamma': [0.001, 0.01, 0.1, 1, 10, 100]}
@@ -163,7 +161,6 @@ best_accuracy_rbf = grid_search_rbf.best_score_
 
 print(f"Best Hyperparameters for SVM - rbf Kernel only, with KFold cross-validation: {best_params_rbf}")
 print(f"Best Accuracy for SVM - rbf Kernel only, with KFold cross-validation: {best_accuracy_rbf:.2f}")
-
 
 ###############################################################################
 # Prediction using best model with best set of hyperparameters found during grid search 
