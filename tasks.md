@@ -1,3 +1,8 @@
+# 5 Oct 2023
+1. Understand the problem of SVM classification for new subjects using geodesic distance via MDS. The reason is MDS results may be traslated and rotated each time it runs so the results won't be the same. See 28/9/2023 notes. So we need to find the translation (a vector) and rotation (unitary matrix) to align $\mathbf X_{-s}$ to $\mathbf X$.
+2. Apply KNN now with geodesic distance and do CV on $k$. 
+3. Create thesis draft to include all the results so that future results collection work can be minised. 
+
 # 28 Sep 2023
 1. Refine hyperparameters for SVM with RBF kernel using MDS 2D resutls by refining the search grid.
 2. Make item 1 as standard procedure in future work.
