@@ -1,3 +1,11 @@
+# 12 Oct 2023
+1. CV on SVM with precomputed kernel for both $C$ and $\gamma$, starting with $\gamma=30,000$ and $C=1$.
+2. Try
+   2.1 MSnet: https://arxiv.org/pdf/2201.10145.pdf (code: https://github.com/GitZH-Chen/MSNet/tree/main in matlab)
+   2.2 ManifoldNet: https://arxiv.org/pdf/1809.06211.pdf (code: https://github.com/jjbouza/manifold-net-vision in python)
+   for prediction of new observations.
+
+
 # 5 Oct 2023
 1. Understand the problem of SVM classification for new subjects using geodesic distance via MDS. The reason is MDS results may be traslated and rotated each time it runs so the results won't be the same. See 28/9/2023 notes. So we need to find the translation (a vector) and rotation (unitary matrix) to align $\mathbf X_{-s}$ to $\mathbf X$.
 2. Apply KNN now with geodesic distance and do CV on $k$. 
