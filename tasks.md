@@ -1,8 +1,10 @@
 # 17 Nov 2023
 We should stop here for squeezing it too much. Let’s move on to the next step: find a projection so that the new data can be processed in dimensionality reduction (like MDS). Recall that MDS does NOT have a projection so that we don’t know how to project a new instance (a new correlation matrix) to 2D space. It is possible to use methods like LPP (local proximity projection). However, we are dealing with correlation matrices, not the original data, meaning we cannot use them directly. But we can employ similar idea. The projection can be built on geodesic distances. We do the following recalling the MDS results with various target dimensions. 
 
-1. Determine the best target dimension of MDS with geodesic distance. Write it as $d$. We have results before. Please check. 
-2. We try to learn the kernel directly from the geodesic distance by running a regression. Write $d_{ij}$ as the geodesic distance between subject $i$ and $j$, and $k_{ij}$ the cooresponding kernel value derived from SVM with RGB kernel and its optimal hyperparameter $\gamma$ in dimension $d$. Then we build the mapping from $d_{ij}$ to $k_{ij}$ as $f: D_g \mapsto \mathbb R$. 
+1. Determine the best target dimension of MDS with geodesic distance. Write it as $d$. We have results before. Please check.
+2. From step 1, we should have optimal kernel parameter $\gamma$, which is derived from model selection for SVM with RBF kernel, as well as the $C$ in SVM itself. Now repeat the steps in task on 28 Sep 2023 (see below) and compare kernel Gram matrices computed on $\mathbf X$ and $\mathbf X_s$. The overlapped elements may be very similar. Confirm this is true or false.
+3. If step 2 is confirmed to be true, we then stick with MDS with target dim $d$ and computer kernel manally with the optimal $\gamma$. Then repeat the pre-computed kernel process. Otherwise, we consider step 4. 
+4. We try to learn the kernel directly from the geodesic distance by running a regression. Write $d_{ij}$ as the geodesic distance between subject $i$ and $j$, and $k_{ij}$ the cooresponding kernel value derived from SVM with RBF kernel and its optimal hyperparameter $\gamma$ in dimension $d$. Then we build the mapping from $d_{ij}$ to $k_{ij}$ as $f: D_g \mapsto \mathbb R$. This regression can be anything, for example, a SVM regressor or a feed forward neural network. After it is done, we use this mapping for pre-computed kernel and validate its performance. 
 
 # 12 Oct 2023
 1. CV on SVM with precomputed kernel for both $C$ and $\gamma$, starting with $\gamma=30,000$ and $C=1$.
