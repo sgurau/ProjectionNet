@@ -1,3 +1,9 @@
+# 17 Nov 2023
+We should stop here for squeezing it too much. Let’s move on to the next step: find a projection so that the new data can be processed in dimensionality reduction (like MDS). Recall that MDS does NOT have a projection so that we don’t know how to project a new instance (a new correlation matrix) to 2D space. It is possible to use methods like LPP (local proximity projection). However, we are dealing with correlation matrices, not the original data, meaning we cannot use them directly. But we can employ similar idea. The projection can be built on geodesic distances. We do the following recalling the MDS results with various target dimensions. 
+
+1. Determine the best target dimension of MDS with geodesic distance. Write it as $d$. We have results before. Please check. 
+2. We try to learn the kernel directly from the geodesic distance by running a regression. Write $d_{ij}$ as the geodesic distance between subject $i$ and $j$, and $k_{ij}$ the cooresponding kernel value derived from SVM with RGB kernel and its optimal hyperparameter $\gamma$ in dimension $d$. Then we build the mapping from $d_{ij}$ to $k_{ij}$ as $f: D_g \mapsto \mathbb R$. 
+
 # 12 Oct 2023
 1. CV on SVM with precomputed kernel for both $C$ and $\gamma$, starting with $\gamma=30,000$ and $C=1$.
 2. Try the following for prediction of new observations: 
