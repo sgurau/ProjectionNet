@@ -1,6 +1,6 @@
 # 12/1/2024
 1. Find out extension process for MRes
-2. Try pairwise neural networks structure for nonlinear projection based on geodesic distances, i.e. $x_i = f(D_i|\theta)$ where $f$ is the neural network and $theta$ is its parameters.
+2. Try pairwise neural networks structure for nonlinear projection based on geodesic distances, i.e. $x_i = f(D_i|\theta)$ where $f$ is the neural network and $\theta$ is its parameters.
 3. Try ManifoldNet: https://arxiv.org/pdf/1809.06211.pdf (code: https://github.com/jjbouza/manifold-net-vision in python) and MSnet: https://arxiv.org/pdf/2201.10145.pdf (code: https://github.com/GitZH-Chen/MSNet/tree/main in matlab)
 
 # 17 Nov 2023
