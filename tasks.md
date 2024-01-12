@@ -1,3 +1,8 @@
+# 12/1/2024
+1. Find out extension process for MRes
+2. Try pairwise neural networks structure for nonlinear projection based on geodesic distances, i.e. $x_i = f(D_i|\theta)$ where $f$ is the neural network and $theta$ is its parameters.
+3. Try ManifoldNet: https://arxiv.org/pdf/1809.06211.pdf (code: https://github.com/jjbouza/manifold-net-vision in python) and MSnet: https://arxiv.org/pdf/2201.10145.pdf (code: https://github.com/GitZH-Chen/MSNet/tree/main in matlab)
+
 # 17 Nov 2023
 We should stop here for squeezing it too much. Let’s move on to the next step: find a projection so that the new data can be processed in dimensionality reduction (like MDS). Recall that MDS does NOT have a projection so that we don’t know how to project a new instance (a new correlation matrix) to 2D space. It is possible to use methods like LPP (local proximity projection). However, we are dealing with correlation matrices, not the original data, meaning we cannot use them directly. But we can employ similar idea. The projection can be built on geodesic distances. We do the following recalling the MDS results with various target dimensions. 
 
