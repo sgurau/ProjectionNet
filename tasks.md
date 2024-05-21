@@ -1,3 +1,9 @@
+# 12/1/2024 - 30/5/2024
+Production: large scale test on models and SOTA 
+31 models + SOTA
+30 trials 
+Five number of AUC
+
 # 12/1/2024
 1. Find out extension process for MRes
 2. Try pairwise neural networks structure for nonlinear projection based on geodesic distances, i.e. $x_i = f(D_i|\theta)$ where $f$ is the neural network and $\theta$ is its parameters.
